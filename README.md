@@ -6,7 +6,7 @@ NIMBUS (Nucleation Inference via Mixture-Based Uncertainty-quantified Simulation
 The console works standalone in live simulation mode, running the real physics directly, with no pre-trained model required:
 
 ```bash
-git clone <https://github.com/yutipurohit/pyrcel.git>  # or your fork's URL
+git clone <https://github.com/yutipurohit/pyrcel.git>
 pip install "git+https://github.com/yutipurohit/pyrcel.git@add-surface-tension-support"
 pip install streamlit numpy pandas matplotlib scipy scikit-learn joblib
 
