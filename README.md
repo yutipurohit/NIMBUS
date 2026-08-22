@@ -2,8 +2,22 @@
 NIMBUS (Nucleation Inference via Mixture-Based Uncertainty-quantified Simulation) predicts cloud droplet activation from aerosol composition using a Gaussian Process trained through active learning on a modified pyrcel that accounts for variable surface tension. The model is wrapped in a console for instant predictions. NIMBUS is built to answer one question quickly instead of one lengthy physics simulation at a time: *given this mixture of an ionic salt compounmd and surfactnat, how many cloud droplets form?*
 
 ---
+## Quick start:
+The console works standalone in live simulation mode, running the real physics directly, with no pre-trained model required:
 
-## What this actually is
+```bash
+git clone <https://github.com/yutipurohit/pyrcel.git>  # or your fork's URL
+pip install "git+https://github.com/yutipurohit/pyrcel.git@add-surface-tension-support"
+pip install streamlit numpy pandas matplotlib scipy scikit-learn joblib
+
+streamlit run app.py
+```
+
+To unlock the fast, uncertainty-aware surrogate predictions instead of live simulation, you do need the full pipeline(see 'Setup' below). Once `active_learning_surrogate.py` finishes, re-running the console automatically switches to surrogate mode.
+
+---
+
+## What this does:
 
 NIMBUS is built from four distinct layers, stacked so the expensive layer (real physics) only has to run as often as necessary, and the first layer (the surrogate) inherits its trustworthiness from being validated against the real simulation.
 
@@ -46,7 +60,7 @@ NIMBUS extends six core modules (`thermo.py`, `aerosol.py`, `equilibrate.py`, `p
 ### 3. The compound database (some flagged values)
 `compound_database.py` holds κ and σ for 20 real compounds, split between well-established atmospheric species (sourced directly from Petters & Kreidenweis 2007's own reference table) and surfactants (sourced from surfactant chemistry literature, since these aren't studied as CCN in atmospheric science). Every entry is tagged `measured` or `derived.` Several surfactant κ values are still placeholders pending proper molecular-property derivation, and the database says so inline rather than presenting them as equally trustworthy.
 
-### 4. The surrogate model: Active learning on real data
+### 4. Active learning model
 `active_learning_surrogate.py` trains a Gaussian Process on the 10,000-row dataset using **pool-based active learning**: it asks, ""if I could only afford to look at a fraction of these, which ones would teach the model the most?" instead of treating all 10,000 values equally. — selecting by predictive uncertainty rather than randomly, and comparing directly against a random-sampling baseline on the same held-out test set. 
 
 **Results:** 
