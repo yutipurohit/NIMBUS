@@ -50,6 +50,9 @@ NIMBUS extends six core modules (`thermo.py`, `aerosol.py`, `equilibrate.py`, `p
 `active_learning_surrogate.py` trains a Gaussian Process on the 10,000-row dataset using **pool-based active learning**: it asks, ""if I could only afford to look at a fraction of these, which ones would teach the model the most?" instead of treating all 10,000 values equally. — selecting by predictive uncertainty rather than randomly, and comparing directly against a random-sampling baseline on the same held-out test set. 
 
 **Results:** 
+- RMSE: 1.7019e+07
+- MAE:  1.3634e+07
+- R^2:  0.9813
 
 ### 5. The console
 `app.py`,a Streamlit application styled as an instrument panel (not a default form UI), automatically detects whether a trained surrogate exists on disk; if not, every query runs the real simulator directly and says so plainly in a status banner. A "Force live simulation" toggle lets you check any surrogate prediction against ground truth on demand, and a composition sweep tool works in both modes.
