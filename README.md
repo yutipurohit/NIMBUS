@@ -1,6 +1,8 @@
 # NIMBUS
 NIMBUS (Nucleation Inference via Mixture-Based Uncertainty-quantified Simulation) predicts cloud droplet activation from aerosol composition using a Gaussian Process trained through active learning on a modified pyrcel that accounts for variable surface tension. The model is wrapped in a console for instant predictions. NIMBUS is built to answer one question quickly instead of one lengthy physics simulation at a time: *given this mixture of an ionic salt compounmd and surfactnat, how many cloud droplets form?*
 
+Find the live application hosted on streamlit here: https://nimbus-cloudseeding-yutipurohit.streamlit.app/
+
 ---
 ## Quick start:
 The console works standalone in live simulation mode, running the real physics directly, with no pre-trained model required:
