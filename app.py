@@ -120,13 +120,13 @@ st.write("")
 gp, scaler = load_surrogate()
 if gp is None:
     st.markdown(
-        '<div class="status-banner status-live">● LIVE SIMULATION MODE — surrogate model not yet trained. '
+        '<div class="status-banner status-live">● LIVE SIMULATION MODE: surrogate model not yet trained. '
         'Every query runs a real pyrcel parcel simulation (slower, but ground truth).</div>',
         unsafe_allow_html=True,
     )
 else:
     st.markdown(
-        '<div class="status-banner status-surrogate">● SURROGATE MODE — predictions from the trained '
+        '<div class="status-banner status-surrogate">● SURROGATE MODE: predictions from the trained '
         'Gaussian Process (fast, includes uncertainty). Check "Force live simulation" in the sidebar '
         'for trajectory/radius plots.</div>',
         unsafe_allow_html=True,
