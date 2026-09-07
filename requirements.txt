@@ -1,4 +1,4 @@
-git+https://github.com/yutipurohit/pyrcel.git@add-surface-tension-support
+git+https://github.com/yutipurohit/pyrcel.git@add-surface-tension
 streamlit
 numpy
 pandas
